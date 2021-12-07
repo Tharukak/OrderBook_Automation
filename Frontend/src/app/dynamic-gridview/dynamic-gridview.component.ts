@@ -2,6 +2,9 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 import { MatTableDataSource } from '@angular/material/table';
 import { MatSort } from '@angular/material/sort';
 import { MatPaginator } from '@angular/material/paginator';
+import { Owner } from './dynamic-gridview.model';
+
+
 
 @Component({
   selector: 'app-dynamic-gridview',
@@ -10,72 +13,39 @@ import { MatPaginator } from '@angular/material/paginator';
 })
 
 export class DynamicGridviewComponent  {
-  displayedColumns = ['id', 'name', 'progress', 'color'];
-  dataSource: MatTableDataSource<UserData>;
-
-  @ViewChild(MatPaginator) paginator: MatPaginator;
-  @ViewChild(MatSort) sort: MatSort;
-
+  public displayedColumns = ['name', 'dateOfBirth', 'address', 'details', 'update', 'delete'
+];
+public dataSource = new MatTableDataSource<Owner>();
+@ViewChild(MatSort) sort: MatSort;
+@ViewChild(MatPaginator) paginator: MatPaginator;
 
 
   constructor() { 
-    // Create 100 users
-    const users: UserData[] = [];
-    for (let i = 1; i <= 100; i++) { users.push(createNewUser(i)); }
-    // Assign the data to the data source for the table to render
-    this.dataSource = new MatTableDataSource(users);
   }
-
-  /**
-   * Set the paginator and sort after the view init since this component will
-   * be able to query its view for the initialized paginator and sort.
-   */
-  ngAfterViewInit() {
-    this.dataSource.paginator = this.paginator;
-    this.dataSource.sort = this.sort;
-  }
-
-  applyFilter(filterValue: string) {
-    filterValue = filterValue.trim(); // Remove whitespace
-    filterValue = filterValue.toLowerCase(); // Datasource defaults to lowercase matches
-    this.dataSource.filter = filterValue;
-  }
-  
 
   ngOnInit(): void {
+    this.getAllOwners();
+  }
+  public getAllOwners = () => {
+    // this.repoService.getData('api/owner')
+    // .subscribe(res => {
+    //   this.dataSource.data = res as Owner[];
+    // })
+  }
+  public redirectToDetails = (id: string) => {
+    
+  }
+  public redirectToUpdate = (id: string) => {
+    
+  }
+  public redirectToDelete = (id: string) => {  
+  }
+  ngAfterViewInit(): void {
+    this.dataSource.sort = this.sort;
+    this.dataSource.paginator = this.paginator;
   }
 
+  public doFilter = (value: string) => {
+    this.dataSource.filter = value.trim().toLocaleLowerCase();
+  }
 }
-
-/** Builds and returns a new User. */
-function createNewUser(id: number): UserData {
-  const name =
-      NAMES[Math.round(Math.random() * (NAMES.length - 1))] + ' ' +
-      NAMES[Math.round(Math.random() * (NAMES.length - 1))].charAt(0) + '.';
-
-  return {
-    id: id.toString(),
-    name: name,
-    progress: Math.round(Math.random() * 100).toString(),
-    color: COLORS[Math.round(Math.random() * (COLORS.length - 1))]
-  };
-}
-
-/** Constants used to fill up our data base. */
-const COLORS = ['maroon', 'red', 'orange', 'yellow', 'olive', 'green', 'purple',
-  'fuchsia', 'lime', 'teal', 'aqua', 'blue', 'navy', 'black', 'gray'];
-const NAMES = ['Maia', 'Asher', 'Olivia', 'Atticus', 'Amelia', 'Jack',
-  'Charlotte', 'Theodore', 'Isla', 'Oliver', 'Isabella', 'Jasper',
-  'Cora', 'Levi', 'Violet', 'Arthur', 'Mia', 'Thomas', 'Elizabeth'];
-
-export interface UserData {
-  id: string;
-  name: string;
-  progress: string;
-  color: string;
-}
-
-
-/**  Copyright 2018 Google Inc. All Rights Reserved.
-    Use of this source code is governed by an MIT-style license that
-    can be found in the LICENSE file at http://angular.io/license */

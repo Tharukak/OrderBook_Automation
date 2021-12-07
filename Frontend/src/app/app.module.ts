@@ -3,7 +3,6 @@ import { BrowserModule } from '@angular/platform-browser';
 import { ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 
-
 // used to create fake backend
 import { fakeBackendProvider } from './_helpers';
 
@@ -16,6 +15,7 @@ import { DynamicGridviewComponent } from './dynamic-gridview/dynamic-gridview.co
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {FormsModule} from '@angular/forms';
 import { MatSliderModule } from '@angular/material/slider';
+
 
 
 
@@ -61,7 +61,6 @@ import { MatPaginatorModule } from '@angular/material/paginator';
         MatToolbarModule,
         MatIconModule,
         MatButtonModule,
-
     MatListModule,
 
     MatMenuModule,
@@ -82,8 +81,7 @@ import { MatPaginatorModule } from '@angular/material/paginator';
     declarations: [
         AppComponent,
         AlertComponent,
-        HomeComponent
-,
+        HomeComponent,
         DynamicGridviewComponent
     ],
     providers: [
