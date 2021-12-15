@@ -1,4 +1,4 @@
-﻿import { NgModule } from '@angular/core';
+﻿import { CUSTOM_ELEMENTS_SCHEMA, NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
@@ -46,6 +46,8 @@ import { MatInputModule } from '@angular/material/input';
 
 import { MatPaginatorModule } from '@angular/material/paginator';
 
+import { DynamicMatTableModule } from 'dynamic-mat-table';
+
 @NgModule({
     imports: [
         BrowserModule,
@@ -73,9 +75,9 @@ import { MatPaginatorModule } from '@angular/material/paginator';
 
     MatInputModule,
 
-    MatPaginatorModule
+    MatPaginatorModule,
 
-
+    DynamicMatTableModule
 
     ],
     declarations: [
@@ -91,6 +93,9 @@ import { MatPaginatorModule } from '@angular/material/paginator';
         // provider used to create fake backend
         fakeBackendProvider
     ],
-    bootstrap: [AppComponent]
+    bootstrap: [AppComponent],
+    schemas: [
+        CUSTOM_ELEMENTS_SCHEMA
+      ],
 })
 export class AppModule { };

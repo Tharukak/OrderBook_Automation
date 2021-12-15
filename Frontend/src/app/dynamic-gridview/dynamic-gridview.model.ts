@@ -1,6 +1,38 @@
 export interface Owner{
-    id: string;
-    name: string;
-    dateOfBirth: Date;
-    address: string;
+    OrderId : number,
+    OrderLine: number,
+    MONumber:number,
+    DestinationId:string,
+    WarehouseId:string,
+    SKU:string,
+    PackingTerm:string,
+    MPO:string,
+    Status:number,
+    RequestedDeliveryDate:Date,
+    PlannedDate:Date,
+    ConfirmedDeliveryDate:Date,
+    RequestedDeliveryDate_M3:number,
+    PlannedDate_M3:number,
+    ConfirmedDeliveryDate_M3:Date,
+    StyleNo:String,
+    DeliveryMethod:String,
+    OrderedQuantity:Number,
+    DeliveredQuantityAltUM:number,
+    InvoicedQuantityAltUM:number,
+    PickingListQuantityAltUM:number,
+    AttributeValueDisplayField6:string,
+    DeliveredQuantityBasicUM:number,
+    InvoicedQuantityBasicUM:number,
+    TransactionReason:string,
+    CustomerStyle:string  
+    Description:string,
+    BuyerId:string,
+    BuyerDivisionId:string,
+    BasicUOM:string,
+    ItemType:string,
+    ProductGroup:string,
+    ProcumentGroup:string,
+    GroupTechClass:string,
+    ColorId:string,
+    ColorName:string
 }
