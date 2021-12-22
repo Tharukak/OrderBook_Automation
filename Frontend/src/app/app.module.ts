@@ -48,6 +48,8 @@ import { MatPaginatorModule } from '@angular/material/paginator';
 
 import { DynamicMatTableModule } from 'dynamic-mat-table';
 
+import {MsalModule} from '@azure/msal-angular';
+
 @NgModule({
     imports: [
         BrowserModule,
@@ -77,7 +79,9 @@ import { DynamicMatTableModule } from 'dynamic-mat-table';
 
     MatPaginatorModule,
 
-    DynamicMatTableModule
+    DynamicMatTableModule,
+
+    MsalModule
 
     ],
     declarations: [
@@ -89,7 +93,7 @@ import { DynamicMatTableModule } from 'dynamic-mat-table';
     providers: [
         { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },
         { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true },
-
+        
         // provider used to create fake backend
         fakeBackendProvider
     ],
