@@ -14,17 +14,17 @@ export class LoginController {
 
     }
 
-    @Post('/userrole')
-    async getRole(@Body() userRole): Promise<any> {
+    // @Post('/userrole')
+    // async getRole(@Body() userRole): Promise<any> {
      
-     return this.LoginService.findRole(userRole);
+    //  return this.LoginService.findRole(userRole);
 
-    }
+    // }
 
-    @Post('/rolescope')
-    async getRoleScope(@Body() userRoleScope): Promise<any> {
+    // @Post('/rolescope')
+    // async getRoleScope(@Body() userRoleScope): Promise<any> {
      
-     return this.LoginService.findRoleScope(userRoleScope);
+    //  return this.LoginService.findRoleScope(userRoleScope);
 
-    }
+    // }
 }

@@ -1,7 +1,8 @@
-import { Entity, Column, PrimaryGeneratedColumn } from 'typeorm';
+import { RoleEntity } from 'src/entity/role.entity';
+import { Entity, Column, PrimaryGeneratedColumn, ManyToMany, JoinTable } from 'typeorm';
 
-@Entity()
-export class Login {
+@Entity({name:'OB_Master_User'})
+export class UserLogin {
   @PrimaryGeneratedColumn()
   cluster_code: string;
 
@@ -22,5 +23,20 @@ export class Login {
 
   @Column()
   created_date: Date;
+
+  @ManyToMany(type => RoleEntity)
+  @JoinTable({
+      name: 'OB_User_Role',
+      joinColumn: {
+        name: 'user_id',
+        referencedColumnName: 'user_id',
+      },
+      inverseJoinColumn: {
+        name: 'role_id',
+        referencedColumnName: 'role_id',
+      },
+    })
+  roles: RoleEntity[];
+
 
 }

@@ -6,7 +6,9 @@ import { Orderbook } from './orderbook-details/orderbook-details.entity';
 import { OrderbookDetailsModule } from './orderbook-details/orderbook-details.module';
 import { LoginController } from './user-login/user-login.controller';
 import { LoginService } from './user-login/user-login.service';
-import { Login } from './user-login/user-login.entity';
+import { UserLogin } from './user-login/user-login.entity';
+import { RoleEntity } from './entity/role.entity';
+import { ScopeEntity } from './entity/scope.entity';
 
 @Module({
   imports: [ TypeOrmModule.forRoot({
@@ -23,7 +25,7 @@ import { Login } from './user-login/user-login.entity';
         minVersion: 'TLSv1'
       }, encrypt: false
     }
-  }),TypeOrmModule.forFeature([Orderbook,Login]),OrderbookDetailsModule],
+  }),TypeOrmModule.forFeature([Orderbook,UserLogin,RoleEntity,ScopeEntity]),OrderbookDetailsModule],
   controllers: [AppController,LoginController],
   providers: [AppService,LoginService],
 
