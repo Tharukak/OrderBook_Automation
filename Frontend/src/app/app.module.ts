@@ -48,6 +48,18 @@ import { MatPaginatorModule } from '@angular/material/paginator';
 
 import { DynamicMatTableModule } from 'dynamic-mat-table';
 
+import{ MsalModule, MsalService, MSAL_INSTANCE } from '@azure/msal-angular';
+import { IPublicClientApplication, PublicClientApplication } from '@azure/msal-browser';
+
+export function MSAL_InstanceFactory():IPublicClientApplication{
+  return new PublicClientApplication ({
+    auth:{
+      clientId:'41be05d2-eccd-44ee-bed3-d0c1f8fb8819',
+      redirectUri:'http://localhost:4200'
+    }
+  })
+}
+
 @NgModule({
     imports: [
         BrowserModule,
@@ -77,7 +89,9 @@ import { DynamicMatTableModule } from 'dynamic-mat-table';
 
     MatPaginatorModule,
 
-    DynamicMatTableModule
+    DynamicMatTableModule,
+
+    MsalModule
 
     ],
     declarations: [
@@ -87,9 +101,10 @@ import { DynamicMatTableModule } from 'dynamic-mat-table';
         DynamicGridviewComponent
     ],
     providers: [
-        { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },
-        { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true },
-
+        // { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },
+        // { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true },
+        { provide: MSAL_INSTANCE,useFactory:MSAL_InstanceFactory},
+        MsalService,
         // provider used to create fake backend
         fakeBackendProvider
     ],
