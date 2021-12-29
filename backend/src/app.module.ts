@@ -4,6 +4,11 @@ import { TypeOrmModule } from '@nestjs/typeorm';
 import { AppService } from './app.service';
 import { Orderbook } from './orderbook-details/orderbook-details.entity';
 import { OrderbookDetailsModule } from './orderbook-details/orderbook-details.module';
+import { LoginController } from './user-login/user-login.controller';
+import { LoginService } from './user-login/user-login.service';
+import { UserLogin } from './user-login/user-login.entity';
+import { RoleEntity } from './entity/role.entity';
+import { ScopeEntity } from './entity/scope.entity';
 
 @Module({
   imports: [ TypeOrmModule.forRoot({
@@ -20,9 +25,9 @@ import { OrderbookDetailsModule } from './orderbook-details/orderbook-details.mo
         minVersion: 'TLSv1'
       }, encrypt: false
     }
-  }),TypeOrmModule.forFeature([Orderbook]),OrderbookDetailsModule],
-  controllers: [AppController],
-  providers: [AppService],
+  }),TypeOrmModule.forFeature([Orderbook,UserLogin,RoleEntity,ScopeEntity]),OrderbookDetailsModule],
+  controllers: [AppController,LoginController],
+  providers: [AppService,LoginService],
 
 })
 export class AppModule {}
