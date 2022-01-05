@@ -49,7 +49,6 @@ import { MatPaginatorModule } from '@angular/material/paginator';
 
 import { DynamicMatTableModule } from 'dynamic-mat-table';
 
-<<<<<<< HEAD
 
 import { FooterComponent } from './footer/footer.component';
 
@@ -58,10 +57,6 @@ import{ MsalModule, MsalService, MSAL_INSTANCE } from '@azure/msal-angular';
 
 
 
-=======
-import {MsalModule} from '@azure/msal-angular';;
-import { FooterComponent } from './footer/footer.component'
->>>>>>> parent of b019b10... Merge branch 'master' of https://github.com/Tharukak/OrderBook_Automation
 
 @NgModule({
     imports: [
