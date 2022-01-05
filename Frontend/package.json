@@ -30,6 +30,7 @@
     "zone.js": "^0.10.3"
   },
   "devDependencies": {
+<<<<<<< HEAD
     "@angular-devkit/build-angular": "^0.1102.17",
     "@angular/cli": "^11.2.17",
     "@angular/compiler-cli": "^11.2.14",
@@ -41,6 +42,19 @@
     "jasmine-spec-reporter": "~5.0.0",
     "karma": "^6.3.9",
     "karma-chrome-launcher": "~3.1.0",
+=======
+    "@angular-devkit/build-angular": "^0.1000.1",
+    "@angular/cli": "^10.0.1",
+    "@angular/compiler-cli": "^10.0.3",
+    "@types/node": "^12.11.1",
+    "@types/jasmine": "^3.5.0",
+    "@types/jasminewd2": "^2.0.3",
+    "codelyzer": "^6.0.0-next.1",
+    "jasmine-core": "^3.5.0",
+    "jasmine-spec-reporter": "^5.0.0",
+    "karma": "^5.0.0",
+    "karma-chrome-launcher": "^3.1.0",
+>>>>>>> parent of b019b10... Merge branch 'master' of https://github.com/Tharukak/OrderBook_Automation
     "karma-coverage-istanbul-reporter": "^3.0.2",
     "karma-jasmine": "~4.0.0",
     "karma-jasmine-html-reporter": "^1.5.0",

@@ -6,16 +6,9 @@
         <a class="nav-item nav-link" routerLink="/users" routerLinkActive="active">Operation</a>
         <a class="nav-item nav-link" routerLink="/merchant" routerLinkActive="active">Ops Merchant</a>
         <a class="nav-item nav-link" (click)="logout()">Logout</a>
-        <!-- <a class="nav-item nav-link" (click)="Login()"*ngIf="!isLoggedIn()">Login</a> -->
     </div>
 </nav>
 </div>
-<!-- <div *ngIf="isLoggedIn()">
-  <h3>You are logged in</h3>
-</div>
-<div *ngIf="!isLoggedIn()">
-  <h3>You are don't logged in</h3>
-</div> -->
 <!-- main app container -->
 <div class="app-container" [ngClass]="{ 'bg-light': user }">
     <alert></alert>
