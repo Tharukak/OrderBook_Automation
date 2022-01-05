@@ -4682,6 +4682,10 @@ input[type="button"].btn-block {
   padding-right: 0.5rem;
   padding-left: 0.5rem;
 }
+.navbar-expand .navbar-nav .nav-right {
+  padding-left: 800px;
+
+}
 .navbar-expand > .container,
 .navbar-expand > .container-fluid,
 .navbar-expand > .container-sm,

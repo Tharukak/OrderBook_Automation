@@ -10,7 +10,9 @@ const usersModule = () => import('./users/users.module').then(x => x.UsersModule
 
 const routes: Routes = [
     { path: '', component: HomeComponent, canActivate: [AuthGuard] },
-    {path : 'merchant', component: DynamicGridviewComponent},
+    { path: 'operation', component: DynamicGridviewComponent},
+    { path: 'merchant', component: DynamicGridviewComponent},
+    { path: 'reports', component: DynamicGridviewComponent},
     { path: 'users', loadChildren: usersModule, canActivate: [AuthGuard] },
     { path: 'account', loadChildren: accountModule },
 

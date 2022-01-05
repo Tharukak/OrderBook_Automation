@@ -1,11 +1,18 @@
 ﻿<!-- nav -->
+<style>
+h4 {
+  color: rgb(255, 255, 255);
+  margin-top: -5px;
+}
+</style>
 <div>
 <nav class="navbar navbar-expand navbar-dark bg-dark" *ngIf="user">
     <div class="navbar-nav">
         <a class="nav-item nav-link" routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">Home</a>
-        <a class="nav-item nav-link" routerLink="/users" routerLinkActive="active">Operation</a>
+        <a class="nav-item nav-link" routerLink="/operation" routerLinkActive="active">Operation</a>
         <a class="nav-item nav-link" routerLink="/merchant" routerLinkActive="active">Ops Merchant</a>
-        <a class="nav-item nav-link" (click)="logout()">Logout</a>
+        <a class="nav-item nav-link" routerLink="/reports" routerLinkActive="active">Reports</a>
+        <a class="nav-item nav-link nav-right" (click)="logout()">Logout</a>
         <!-- <a class="nav-item nav-link" (click)="Login()"*ngIf="!isLoggedIn()">Login</a> -->
     </div>
 </nav>
@@ -22,9 +29,12 @@
     <router-outlet></router-outlet>
 </div>
 <!-- credits -->
+
 <div class="text-center mt-4">
-  <p>
-    ©️Order Book Automation. All rights reserved.
-</p>
+
+   <h4> ©️Order Book Automation. All rights reserved.</h4>
+
 </div>
+
+
 
