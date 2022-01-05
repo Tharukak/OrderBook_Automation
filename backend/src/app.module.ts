@@ -9,7 +9,6 @@ import { LoginService } from './user-login/user-login.service';
 import { UserLogin } from './user-login/user-login.entity';
 import { RoleEntity } from './entity/role.entity';
 import { ScopeEntity } from './entity/scope.entity';
-import { AuthModule } from './auth/auth.module';
 
 @Module({
   imports: [ TypeOrmModule.forRoot({
@@ -26,7 +25,7 @@ import { AuthModule } from './auth/auth.module';
         minVersion: 'TLSv1'
       }, encrypt: false
     }
-  }),TypeOrmModule.forFeature([Orderbook,UserLogin,RoleEntity,ScopeEntity]),OrderbookDetailsModule,AuthModule],
+  }),TypeOrmModule.forFeature([Orderbook,UserLogin,RoleEntity,ScopeEntity]),OrderbookDetailsModule],
   controllers: [AppController,LoginController],
   providers: [AppService,LoginService],
 

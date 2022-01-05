@@ -2,31 +2,28 @@
 import { Router, ActivatedRoute } from '@angular/router';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { first } from 'rxjs/operators';
-import { Observable } from 'rxjs';
-import { AuthService } from '../_services/auth.service';
-import { LoginService } from '../../../../backend/src/user-login/user-login.service';
+
+import { AccountService, AlertService } from '@app/_services';
 
 @Component({ templateUrl: 'login.component.html', })
 export class LoginComponent implements OnInit {
-    [x: string]: any;
     form: FormGroup;
     loading = false;
     submitted = false;
-    
-    loginForm: Observable<[]>;
-    formBuilder: any;
-    alertService: any;
-    constructor(private router:Router,private authenticationService:AuthService, private loginService: LoginService) {
-      if (this.authenticationService.userValue) {
-        this.authenticationService.navigateUser()
-      }
-    }
+
+    constructor(
+        private formBuilder: FormBuilder,
+        private route: ActivatedRoute,
+        private router: Router,
+        private accountService: AccountService,
+        private alertService: AlertService
+    ) { }
+
     ngOnInit() {
         this.form = this.formBuilder.group({
             username: ['', Validators.required],
             password: ['', Validators.required]
         });
-        // this.loginForm = this.loginService.getLoginForms();
     }
 
     // convenience getter for easy access to form fields

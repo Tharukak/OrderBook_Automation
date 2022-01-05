@@ -4,11 +4,10 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 
 // used to create fake backend
-//import { fakeBackendProvider } from './_helpers';
+import { fakeBackendProvider } from './_helpers';
 
 import { AppRoutingModule } from './app-routing.module';
-import { JwtInterceptor} from './_helpers/jwt.interceptor';
-import { ErrorInterceptor } from './_helpers/error.interceptor';
+import { JwtInterceptor, ErrorInterceptor } from './_helpers';
 import { AppComponent } from './app.component';
 import { AlertComponent } from './_components';
 import { HomeComponent } from './home';
@@ -49,8 +48,7 @@ import { MatPaginatorModule } from '@angular/material/paginator';
 
 import { DynamicMatTableModule } from 'dynamic-mat-table';
 
-import {MsalModule} from '@azure/msal-angular';;
-import { FooterComponent } from './footer/footer.component'
+import {MsalModule} from '@azure/msal-angular';
 
 @NgModule({
     imports: [
@@ -90,15 +88,14 @@ import { FooterComponent } from './footer/footer.component'
         AppComponent,
         AlertComponent,
         HomeComponent,
-        DynamicGridviewComponent,
-        FooterComponent
+        DynamicGridviewComponent
     ],
     providers: [
         { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },
         { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true },
         
         // provider used to create fake backend
-        //fakeBackendProvider
+        fakeBackendProvider
     ],
     bootstrap: [AppComponent],
     schemas: [
