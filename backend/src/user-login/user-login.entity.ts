@@ -1,4 +1,4 @@
-import { RoleEntity } from './role.entity';
+import { RoleEntity } from 'src/entity/role.entity';
 import { Entity, Column, PrimaryGeneratedColumn, ManyToMany, JoinTable } from 'typeorm';
 
 @Entity({name:'OB_Master_User'})
@@ -18,7 +18,8 @@ export class UserLogin {
   @Column()
   password: string;
 
-  
+  @Column()
+  is_acive: boolean;
 
   @Column()
   created_date: Date;
