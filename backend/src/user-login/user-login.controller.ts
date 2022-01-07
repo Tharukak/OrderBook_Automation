@@ -1,16 +1,18 @@
 
 import { Controller, Get, Post,Body } from '@nestjs/common';
-import { LoginService } from './user-login.service';
+import { AuthService } from '../auth/auth.service';
+
+
 
 @Controller('user-login')
 export class LoginController {
 
-    constructor(private LoginService: LoginService) { }
+    constructor(private LoginService:AuthService) { }
 
     @Post('/userdetails')
     async getUser(@Body() userData): Promise<any> {
      
-     return this.LoginService.findUser(userData);
+     return this.LoginService.validateUser(userData.username);
 
     }
 
