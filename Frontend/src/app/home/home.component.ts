@@ -12,14 +12,17 @@ export class HomeComponent {
     }
 
     onNo1Click(): void {
-        this.router.navigate(['/Admin']);
+        //this.router.navigate(['/Admin']);
+        this.accountService.logout();
       }
 
     onNo2Click(): void {
-        this.router.navigate(['/planning']);
+        //this.router.navigate(['/planning']);
+        this.accountService.logout();
     }
 
     onNo3Click(): void {
-        this.router.navigate(['/merchant']);
+        //this.router.navigate(['/merchant']);
+        this.accountService.logout();
     }  
 }

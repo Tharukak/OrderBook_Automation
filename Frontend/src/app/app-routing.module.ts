@@ -8,7 +8,7 @@ import { ScopeGuard } from './_helpers/scope.guard';
 
 const accountModule = () => import('./account/account.module').then(x => x.AccountModule);
 const routes: Routes = [
-    { path: '', component: HomeComponent, canActivate: [AuthGuard] },
+    {path: 'home', component: HomeComponent, canActivate: [AuthGuard] },
     {path : 'merchant', component: DynamicGridviewComponent, canActivate: [AuthGuard,ScopeGuard], data: { scopes: ["Date VPO Update"] }},
     {path : 'planning', component: DynamicGridviewComponent, canActivate: [AuthGuard,ScopeGuard], data: { scopes: ["Date VPO Update"] }},
     //{ path: 'users', loadChildren: usersModule, canActivate: [AuthGuard] },
