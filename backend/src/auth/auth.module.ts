@@ -7,6 +7,7 @@ import { UserLogin } from '../user-login/user-login.entity';
 import { JwtModule } from '@nestjs/jwt';
 import { jwtConstants } from './constants';
 
+
 @Module({  
   imports: [   
       PassportModule,

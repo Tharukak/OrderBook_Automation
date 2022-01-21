@@ -6,7 +6,7 @@ import { Orderbook } from './orderbook-details/orderbook-details.entity';
 import { OrderbookDetailsModule } from './orderbook-details/orderbook-details.module';
 import { LoginController } from './user-login/user-login.controller';
 import { LoginService } from './user-login/user-login.service';
-import { UserLogin } from './user-login/user-login.entity';
+import { UserLogin } from './entity/user.entity';
 import { RoleEntity } from './entity/role.entity';
 import { ScopeEntity } from './entity/scope.entity';
 import { AuthService } from './auth/auth.service';
