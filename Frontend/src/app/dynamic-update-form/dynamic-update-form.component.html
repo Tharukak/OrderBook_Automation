@@ -1,0 +1,71 @@
+<div class="h2">
+  <h2 mat-dialog-title>Orderbook</h2>
+</div>
+
+<mat-dialog-content class="mat-typography">
+  <div class="container">
+    <div [hidden]="submitted">
+      <form (ngSubmit)="onSubmit()" #heroForm="">
+        <div class="form-row">
+        <div class="form-group col-md-6">
+          <label for="PCD">Required PCD (Planning) {{data.MONumber}}</label>
+          <input type="text" class="form-control" id="PCD"
+                 required
+                 [(ngModel)]="model.PCD" name="PCD"
+                 #name="ngModel">
+          <div [hidden]="name.valid || name.pristine"
+               class="alert alert-danger">
+            PCD is required
+          </div>
+        </div>
+        <div class="form-group col-md-6">
+          <div class="form-group">
+            <label for="Impact">Impact Type</label>
+            <input type="text" class="form-control" id="Impact"
+                   [(ngModel)]="model.Impact" name="Impact">
+          </div>
+        </div>
+
+      </div>
+  
+       
+
+        <div class="form-group">
+          <label for="comments">comments</label>
+          <input type="text" class="form-control" id="comments"
+                 [(ngModel)]="model.comments" name="comments">
+        </div>
+  
+        <div class="form-group">
+          <label for="Include">Include/Exclude</label>
+          <select class="form-control" id="Include"
+                  required
+                  [(ngModel)]="model.Include" name="Include"
+                  #power="ngModel">
+            <option *ngFor="" [value]="pow">{{pow}}</option>
+          </select>
+          <div [hidden]="power.valid || power.pristine" class="alert alert-danger">
+            Include/Exclude
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="SMV">Planning -SMV</label>
+          <input type="text" class="form-control" id="alterEgo"
+                 [(ngModel)]="model.SMV" name="SMV">
+        </div>
+        <div class="form-group">
+          <button type="submit" class="btn btn-success" [disabled]="!heroForm.form.valid">Update</button>
+          <button type="button" class="btn btn-default" (click)="newHero(); heroForm.reset()">Clear</button>
+        </div>
+      
+      </form>
+    </div>
+  </div>
+  
+
+</mat-dialog-content>
+<mat-dialog-actions >
+  <button mat-button (click)="onNoClick()">Cancel</button>
+</mat-dialog-actions>
+

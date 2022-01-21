@@ -1,8 +1,20 @@
 ﻿<div class="p-4">
 
     <div class="container">
-        <h1>Hi {{user.firstName}}!</h1>
+        <!-- <h1>Hi {{user.username}}!</h1>
         <p>You're logged in to the System!!</p>
-        <p><a routerLink="/users">Manage Operations</a></p>
+        <p><a routerLink="/merchant">Manage Operations</a></p> -->
+        <div class="row">
+        <div class="column">
+        <button class="button" (click)="onNo1Click()"><span>Admin</span></button>
+       </div>
+       <div class="column">
+        <button class="button" (click)="onNo2Click()"><span>Planning</span></button>
+       </div>
+       <div class="column">
+        <button class="button" (click)="onNo3Click()"><span>Merchant</span></button>
+       </div>
+       </div>
+
     </div>
 </div>

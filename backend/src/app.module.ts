@@ -9,6 +9,9 @@ import { LoginService } from './user-login/user-login.service';
 import { UserLogin } from './user-login/user-login.entity';
 import { RoleEntity } from './entity/role.entity';
 import { ScopeEntity } from './entity/scope.entity';
+import { AuthService } from './auth/auth.service';
+import { JwtService, JwtModule } from '@nestjs/jwt';
+import { AuthModule } from './auth/auth.module';
 
 @Module({
   imports: [ TypeOrmModule.forRoot({
@@ -25,7 +28,7 @@ import { ScopeEntity } from './entity/scope.entity';
         minVersion: 'TLSv1'
       }, encrypt: false
     }
-  }),TypeOrmModule.forFeature([Orderbook,UserLogin,RoleEntity,ScopeEntity]),OrderbookDetailsModule],
+  }),TypeOrmModule.forFeature([Orderbook,UserLogin,RoleEntity,ScopeEntity]),OrderbookDetailsModule,AuthModule],
   controllers: [AppController,LoginController],
   providers: [AppService,LoginService],
 

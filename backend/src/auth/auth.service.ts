@@ -1,5 +1,4 @@
 import { HttpException, HttpStatus, Injectable } from '@nestjs/common';
-import * as bcrypt from 'bcrypt';
 import { JwtService } from '@nestjs/jwt';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
@@ -10,11 +9,12 @@ export class AuthService {
     constructor(private jwtService: JwtService, @InjectRepository(UserLogin)
     private usersRepository: Repository<UserLogin>) {}
 
-    async validateUser(username: string, pass: string): Promise<any> {
+    async validateUser(username: string): Promise<any> {
+        //console.log(username)
         const user = await this.findOneUser(username);
         if(!user)  throw new HttpException('User not found', HttpStatus.UNAUTHORIZED); 
-        const isMatch = await bcrypt.compare(pass);        
-        if (isMatch) {
+            
+  
           const roles = [];
           const scopes = [];
           const { password, ...result } = user;
@@ -31,13 +31,13 @@ export class AuthService {
             scopes:scopes, 
             token: this.jwtService.sign(payload),
           };
-        }
-        throw new HttpException('Login failed', HttpStatus.UNAUTHORIZED); 
+        
+        
       }
 
-      findOneUser(user_name): Promise<UserLogin> {
+      findOneUser(username): Promise<UserLogin> {
         return this.usersRepository.findOne({
-            where: {user_name: user_name},
+            where: {user_name: username},
             relations: ['roles','roles.scopes']
           }); 
     }

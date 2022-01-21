@@ -1,13 +1,25 @@
 ﻿import { Component } from '@angular/core';
-
+import { Router } from '@angular/router';
 import { User } from '@app/_models';
 import { AccountService } from '@app/_services';
 
-@Component({ templateUrl: 'home.component.html' })
+@Component({ templateUrl: 'home.component.html', styleUrls:['home.component.css' ] })
 export class HomeComponent {
     user: User;
 
-    constructor(private accountService: AccountService) {
+    constructor(private accountService: AccountService, private router: Router) {
         this.user = this.accountService.userValue;
     }
+
+    onNo1Click(): void {
+        this.router.navigate(['/Admin']);
+      }
+
+    onNo2Click(): void {
+        this.router.navigate(['/planning']);
+    }
+
+    onNo3Click(): void {
+        this.router.navigate(['/merchant']);
+    }  
 }

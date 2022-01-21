@@ -4,19 +4,23 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { first } from 'rxjs/operators';
 
 import { AccountService, AlertService } from '@app/_services';
+import { AuthService } from '@app/_services/auth.service';
+import { JwtHelperService } from '@auth0/angular-jwt';
 
-@Component({ templateUrl: 'login.component.html', })
+@Component({ templateUrl: 'login.component.html',providers:[JwtHelperService] })
 export class LoginComponent implements OnInit {
     form: FormGroup;
     loading = false;
     submitted = false;
+    authenticationService: any;
 
     constructor(
         private formBuilder: FormBuilder,
         private route: ActivatedRoute,
         private router: Router,
         private accountService: AccountService,
-        private alertService: AlertService
+        private alertService: AlertService,
+        private AuthService:AuthService
     ) { }
 
     ngOnInit() {
@@ -40,14 +44,17 @@ export class LoginComponent implements OnInit {
             return;
         }
 
+        
+
         this.loading = true;
-        this.accountService.login(this.f.username.value, this.f.password.value)
+        this.AuthService.login({'username':this.f.username.value})
             .pipe(first())
             .subscribe({
                 next: () => {
-                    // get return url from query parameters or default to home page
-                    const returnUrl = this.route.snapshot.queryParams['returnUrl'] || '/';
-                    this.router.navigateByUrl(returnUrl);
+   
+                    if (this.AuthService.userValue) {
+                        this.AuthService.navigateUser()
+                      }
                 },
                 error: error => {
                     this.alertService.error(error);

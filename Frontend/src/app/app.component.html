@@ -1,14 +1,17 @@
 ﻿<!-- nav -->
-<div>
-<nav class="navbar navbar-expand navbar-dark bg-dark" *ngIf="user">
-    <div class="navbar-nav">
-        <a class="nav-item nav-link" routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">Home</a>
-        <a class="nav-item nav-link" routerLink="/users" routerLinkActive="active">Operation</a>
-        <a class="nav-item nav-link" routerLink="/merchant" routerLinkActive="active">Ops Merchant</a>
-        <a class="nav-item nav-link" (click)="logout()">Logout</a>
-    </div>
-</nav>
-</div>
+<style>
+
+    h4 {
+    
+      color: rgb(255, 255, 255);
+    
+      margin-top: -5px;
+    
+    }
+    
+    </style>
+
+<app-header></app-header>
 <!-- main app container -->
 <div class="app-container" [ngClass]="{ 'bg-light': user }">
     <alert></alert>
@@ -16,8 +19,9 @@
 </div>
 <!-- credits -->
 <div class="text-center mt-4">
-  <p>
+  <h4>
     ©️Order Book Automation. All rights reserved.
-</p>
+  </h4>
+  
 </div>
 

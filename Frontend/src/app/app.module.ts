@@ -5,7 +5,6 @@ import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 
 // used to create fake backend
 import { fakeBackendProvider } from './_helpers';
-
 import { AppRoutingModule } from './app-routing.module';
 import { JwtInterceptor, ErrorInterceptor } from './_helpers';
 import { AppComponent } from './app.component';
@@ -15,10 +14,6 @@ import { DynamicGridviewComponent } from './dynamic-gridview/dynamic-gridview.co
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {FormsModule} from '@angular/forms';
 import { MatSliderModule } from '@angular/material/slider';
-
-
-
-
 import { CommonModule } from '@angular/common';
 
 import { MatTabsModule } from '@angular/material/tabs';
@@ -45,21 +40,55 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 
 import { MatPaginatorModule } from '@angular/material/paginator';
-
 import { DynamicMatTableModule } from 'dynamic-mat-table';
-
 import {MsalModule} from '@azure/msal-angular';
+import { AccountModule } from './account/account.module';
+import { JwtModule } from '@auth0/angular-jwt';
+import { DynamicUpdateFormComponent } from './dynamic-update-form/dynamic-update-form.component';;
+import { HeaderComponent } from './header/header.component'
+
+
+export function tokenGetter() {
+
+    const user = localStorage.getItem("user");
+  
+    let token = null;
+  
+    try
+  
+    {
+  
+      if(user != null){
+  
+        token = JSON.parse(user).token;
+  
+      }
+  
+    }
+  
+    catch(ex){
+  
+      console.log(ex)
+  
+    }
+  
+  
+  
+    return token;
+  
+  }
+  
 
 @NgModule({
     imports: [
+        FormsModule,
         BrowserModule,
+        CommonModule,
         ReactiveFormsModule,
         HttpClientModule,
         AppRoutingModule,
         BrowserAnimationsModule,
-        FormsModule,
         MatSliderModule,
-        CommonModule,
         MatTabsModule,
         MatSidenavModule,
         MatToolbarModule,
@@ -81,7 +110,15 @@ import {MsalModule} from '@azure/msal-angular';
 
     DynamicMatTableModule,
 
-    MsalModule
+    MsalModule,
+    AccountModule,
+    JwtModule.forRoot({
+        config: {
+          tokenGetter: tokenGetter,
+          allowedDomains: [],
+          disallowedRoutes: []
+        },
+      }),
 
     ],
     declarations: [
@@ -89,6 +126,11 @@ import {MsalModule} from '@azure/msal-angular';
         AlertComponent,
         HomeComponent,
         DynamicGridviewComponent
+,
+        DynamicUpdateFormComponent
+,
+        HeaderComponent
+        
     ],
     providers: [
         { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },
@@ -96,6 +138,7 @@ import {MsalModule} from '@azure/msal-angular';
         
         // provider used to create fake backend
         fakeBackendProvider
+       
     ],
     bootstrap: [AppComponent],
     schemas: [

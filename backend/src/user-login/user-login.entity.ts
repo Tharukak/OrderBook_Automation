@@ -18,8 +18,8 @@ export class UserLogin {
   @Column()
   password: string;
 
-  @Column()
-  is_acive: boolean;
+  // @Column()
+  // is_acive: boolean;
 
   @Column()
   created_date: Date;
