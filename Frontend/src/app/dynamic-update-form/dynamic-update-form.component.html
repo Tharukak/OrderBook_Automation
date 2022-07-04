@@ -7,11 +7,22 @@
     <div [hidden]="submitted">
       <form (ngSubmit)="onSubmit()" #heroForm="">
         <div class="form-row">
+          <div class="form-group col-md-12">
+            <label for="MONumber">MO Number </label>
+            <input type="text" class="form-control" id="MONumber" 
+                   required
+                   [(ngModel)]="data.MONumber" name="MONumber"
+                   #name="ngModel">
+
+          </div>
+  
+        </div>
+        <div class="form-row">
         <div class="form-group col-md-6">
-          <label for="PCD">Required PCD (Planning) {{data.MONumber}}</label>
-          <input type="text" class="form-control" id="PCD"
+          <label for="PCD">Required PCD (Planning) </label>
+          <input type="date" class="form-control" id="PCD" 
                  required
-                 [(ngModel)]="model.PCD" name="PCD"
+                 [(ngModel)]="data.MONumber" name="PCD"
                  #name="ngModel">
           <div [hidden]="name.valid || name.pristine"
                class="alert alert-danger">
@@ -56,7 +67,6 @@
         </div>
         <div class="form-group">
           <button type="submit" class="btn btn-success" [disabled]="!heroForm.form.valid">Update</button>
-          <button type="button" class="btn btn-default" (click)="newHero(); heroForm.reset()">Clear</button>
         </div>
       
       </form>
