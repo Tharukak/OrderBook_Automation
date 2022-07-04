@@ -1,6 +1,5 @@
 ﻿import { Component } from '@angular/core';
 
-import { AccountService } from './_services';
 import { User } from './_models';
 
 // tslint:disable-next-line: component-selector
@@ -10,4 +9,7 @@ export class AppComponent {
 
     constructor() {}
 
+
 }
+
+

@@ -21,6 +21,11 @@ export class AccountService {
 
     public get userValue(): User {
         return this.userSubject.value;
+    
+    }
+
+    public getuser(): any{
+        return JSON.parse(localStorage.getItem('user'));
     }
 
     login(username, password) {

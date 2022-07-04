@@ -41,11 +41,26 @@ import { MatInputModule } from '@angular/material/input';
 
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { DynamicMatTableModule } from 'dynamic-mat-table';
-import {MsalModule} from '@azure/msal-angular';
+import {MsalModule, MsalService, MSAL_INSTANCE} from '@azure/msal-angular';
 import { AccountModule } from './account/account.module';
 import { JwtModule } from '@auth0/angular-jwt';
 import { DynamicUpdateFormComponent } from './dynamic-update-form/dynamic-update-form.component';;
 import { HeaderComponent } from './header/header.component'
+import { IPublicClientApplication, PublicClientApplication } from '@azure/msal-browser';
+import { Authority } from '@azure/msal-common';;
+import { MerchantFormComponent } from './merchant-form/merchant-form.component';
+import { DynamicApprovalFormComponent } from './dynamic-approval-form/dynamic-approval-form.component'
+;
+import { ReportFormComponent } from './report-form/report-form.component'
+export function MSALInstanceFactory():IPublicClientApplication{
+  return new PublicClientApplication({
+    auth:{
+      clientId:"d9f0ed42-85df-4382-b4d2-169b98e0ac3d",
+      redirectUri:"http://localhost:4200/account/login",
+      authority: "https://login.microsoftonline.com/ea1f9c15-7f32-4dfa-b662-cacea1f61d0f/"
+    }
+  })
+}
 
 
 export function tokenGetter() {
@@ -81,6 +96,7 @@ export function tokenGetter() {
 
 @NgModule({
     imports: [
+       MsalModule,
         FormsModule,
         BrowserModule,
         CommonModule,
@@ -129,12 +145,17 @@ export function tokenGetter() {
 ,
         DynamicUpdateFormComponent
 ,
-        HeaderComponent
-        
+        HeaderComponent,
+        MerchantFormComponent
+,
+        DynamicApprovalFormComponent ,
+        ReportFormComponent       
     ],
     providers: [
         { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },
         { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true },
+        { provide: MSAL_INSTANCE, useFactory:MSALInstanceFactory},
+        MsalService,
 
         // provider used to create fake backend
         fakeBackendProvider

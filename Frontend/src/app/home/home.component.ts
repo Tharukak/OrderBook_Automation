@@ -25,4 +25,8 @@ export class HomeComponent {
         //this.router.navigate(['/merchant']);
         this.accountService.logout();
     }  
+    onNo4Click(): void {
+        //this.router.navigate(['/merchant']);
+        this.accountService.logout();
+    }  
 }

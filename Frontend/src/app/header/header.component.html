@@ -1,9 +1,12 @@
 <div>
-    <nav class="navbar navbar-expand navbar-dark bg-dark" *ngIf="user">
+    <nav class="navbar navbar-expand navbar-dark bg-dark" *ngIf="isUserAvailable()">
         <div class="navbar-nav">
+            <mat-icon aria-hidden="false" style="padding-top: 4px;color: antiquewhite;" aria-label="Example home icon">home</mat-icon>
             <a class="nav-item nav-link" routerLink="/home" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">Home</a>
-            <a class="nav-item nav-link" routerLink="/planning" routerLinkActive="active">Operation</a>
-            <a class="nav-item nav-link" routerLink="/planning" routerLinkActive="active">Ops Merchant</a>
+            <a class="nav-item nav-link" routerLink="/planning" routerLinkActive="active">Planning</a>
+            <a class="nav-item nav-link" routerLink="/merchant" routerLinkActive="active">Ops Merchant</a>
+            <a class="nav-item nav-link" routerLink="/report" routerLinkActive="active">Reports</a>
+            <mat-icon aria-hidden="false" style="padding-top: 4px;color: antiquewhite;margin-left:900px;" aria-label="Example home icon">account_circle</mat-icon>
             <a class="nav-item nav-link" (click)="logout()">Logout</a>
         </div>
     </nav>

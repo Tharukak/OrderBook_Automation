@@ -1,0 +1,20 @@
+<app-header></app-header>
+<div class="container">
+    <div class="form-row" style="padding-top:20px;">
+      <div class="form-group col-md-2">
+        <label class="font-color" for="Customer">Report Type</label>
+        <select style="height: auto;" class="form-control" id="Customer"
+              required
+              name="Customer">
+              <option value="Orderbook Detail Report">Orderbook Detail Report</option>
+              <option value="Sales Analysis Report">Sales Analysis Report</option>
+      </select>
+      </div>
+    </div>
+    <mat-card>
+        <dynamic-mat-table class="dynamic-mat-table" [sticky]="stickyHeader" tableName="demo_table" 
+       [columns]="fields" [dataSource]="dataSource$" >
+       </dynamic-mat-table>
+    </mat-card>
+</div>
+

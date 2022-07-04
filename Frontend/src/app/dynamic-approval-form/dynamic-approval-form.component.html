@@ -1,0 +1,86 @@
+<div class="h2">
+    <h2 mat-dialog-title>Orderbook</h2>
+  </div>
+  
+  <mat-dialog-content class="mat-typography">
+    <div class="container">
+      <div [hidden]="submitted">
+        <form  (ngSubmit)="onSubmit()" #heroForm="">
+          <div class="form-row">
+            <div class="form-group col-md-12">
+              <label for="OrderId">Order Number</label>
+              <input type="text" [readonly]="true" [(ngModel)]="OrderId" class="form-control" id="OrderId" 
+                     required
+                     [(ngModel)]="data.OrderId" name="OrderId"
+                      name="OrderId">
+  
+            </div>
+    
+          </div>
+          <div class="form-row">
+          <div class="form-group col-md-7">
+            <label for="PCD">Required PCD (Planning) </label>
+            <input type="text" [readonly]="true"  [(ngModel)]="PCD" class="form-control" id="PCD" 
+            required
+            [(ngModel)]="data.PCD" name="PCD"
+             name="PCD">
+
+          </div>
+          <div class="form-group col-md-5">
+            <div class="form-group">
+              <label for="Impact">Impact Type</label>
+              <input type="text" [readonly]="true"  [(ngModel)]="Impact" class="form-control" id="Impact" 
+              required
+              [(ngModel)]="data.Impact" name="Impact"
+               name="Impact">
+            </div>
+          </div>
+  
+        </div>
+    
+         
+  
+          <div class="form-group">
+            <label for="comments">comments</label>
+            <input type="text" [readonly]="true" [(ngModel)]="comments" class="form-control" id="comments" 
+                     required
+                     [(ngModel)]="data.comments" name="comments"
+                      name="comments">
+  
+          </div>
+    
+          <div class="form-group">
+            <label for="Include">Include/Exclude</label>
+            <input type="text" [readonly]="true"  [(ngModel)]="Include" class="form-control" id="Include" 
+            required
+            [(ngModel)]="data.Include" name="Include"
+             name="Include">
+          </div>
+  
+          <div class="form-group">
+            <label for="SMV">Planning -SMV</label>
+            <input type="text" [readonly]="true"  [(ngModel)]="SMV" class="form-control" id="SMV" 
+                     required
+                     [(ngModel)]="data.SMV" name="SMV"
+                      name="SMV">
+          </div>
+          <div class="form-row">
+          <div class="form-group col-md-4">
+            <button type="submit" class="btn btn-success" >Approve</button>
+          </div>
+          <div class="form-group col-md-3">
+            <button type="reject" class="btn btn-danger" >reject</button>
+          </div>
+          <div class="form-group col-md-2"></div>
+            <mat-dialog-actions >
+              <button mat-button (click)="onNoClick()">Cancel</button>
+            </mat-dialog-actions>
+        </div>
+        </form>
+      </div>
+    </div>
+    
+  
+  </mat-dialog-content>
+  
+  

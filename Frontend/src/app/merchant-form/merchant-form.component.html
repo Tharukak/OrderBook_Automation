@@ -1,0 +1,56 @@
+<app-header></app-header>
+<div class="container">
+    <div class="form-row" style="padding-top:20px;">
+      <div class="form-group col-md-2">
+        <label class="font-color" for="Customer">Customer</label>
+        <select style="height: auto;" class="form-control" id="Customer"
+              required
+              name="Customer">
+              <option value="">Select Buyer</option>
+              <option *ngFor="let buyer of buyerList">{{buyer.BuyerId}}</option>
+      </select>
+      </div>
+     
+      <div class="form-group col-md-2">
+        <label class="font-color" for="FOS">Forecasted OTD Status</label>
+        <select style="height: auto;" class="form-control" id="FOS"
+              required
+              name="FOS">
+              <option value="Include">Include</option>
+              <option value="Exclude">Exclude</option>
+      </select>
+      </div>
+      <div class="form-group col-md-2">
+        <label class="font-color" for="Prod_factory">Prod Factory</label>
+        <select style="height: auto;" class="form-control" id="Prod_factory"
+              required
+              name="Prod_factory">
+              <option value="Include">Include</option>
+              <option value="Exclude">Exclude</option>
+      </select>
+      </div>
+      <div class="form-group col-md-2">
+        <label class="font-color" for="pending_app">Pending Approval</label>
+        <select style="height: auto;" class="form-control" id="pending_app"
+              required
+              name="pending_app">
+              <option value="Include">Include</option>
+              <option value="Exclude">Exclude</option>
+      </select>
+      </div>
+      <div class="form-group col-md-2">
+        <label class="font-color" for="unsheduled_del">Unsheduled Del</label>
+        <select style="height: auto;" class="form-control" id="unsheduled_del"
+              required
+              name="unsheduled_del">
+              <option value="Include">Include</option>
+              <option value="Exclude">Exclude</option>
+      </select>
+      </div>
+    </div>
+</div>
+
+
+<dynamic-mat-table class="dynamic-mat-table" [sticky]="stickyHeader" tableName="demo_table" 
+[columns]="fields" [dataSource]="dataSource$" (onRowEvent)="rowEvent_onClick($event)">
+</dynamic-mat-table> 

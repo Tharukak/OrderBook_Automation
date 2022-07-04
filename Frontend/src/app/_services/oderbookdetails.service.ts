@@ -15,7 +15,11 @@ export class orderbookdetailsservice {
     }
 
     orderdetails() {
-        return this.http.get('http://localhost:3000/orderbook-details/orderdetails')      
+        return this.http.get('http://localhost:3000/orderbook-details/orderdetails');     
+    }
+
+    buyers() {
+        return this.http.get('http://localhost:3000/orderbook-details/buyers');     
     }
   
 }

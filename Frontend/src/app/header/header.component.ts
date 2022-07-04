@@ -13,9 +13,12 @@ export class HeaderComponent implements OnInit {
   user: User;
 
   constructor(private accountService: AccountService, private router: Router) {
-      this.accountService.user.subscribe(x => this.user = x);
+    this.user = this.accountService.getuser();
   }
 
+  isUserAvailable(){
+    return this.user;
+  }
   // tslint:disable-next-line: typedef
   logout() {
       //this.accountService.logout();

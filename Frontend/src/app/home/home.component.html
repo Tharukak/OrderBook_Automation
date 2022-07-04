@@ -6,15 +6,19 @@
         <p><a routerLink="/merchant">Manage Operations</a></p> -->
         <div class="row">
         <div class="column">
-        <button class="button" (click)="onNo1Click()"><span>Admin</span></button>
+        <button class="button" (click)="onNo1Click()"><span>Admin<br/><br/> <mat-icon>settings</mat-icon></span></button>
        </div>
        <div class="column">
-        <button class="button" (click)="onNo2Click()"><span>Planning</span></button>
+        <button class="button" (click)="onNo2Click()"><span>Planning<br/><br/>  <mat-icon>horizontal_split</mat-icon></span></button>
        </div>
        <div class="column">
-        <button class="button" (click)="onNo3Click()"><span>Merchant</span></button>
+        <button class="button" (click)="onNo3Click()"><span>Merchant<br/><br/><mat-icon>verified_user</mat-icon></span></button>
        </div>
+      
+       <div class="column">
+        <button class="button" (click)="onNo4Click()"><span>Reports<br/><br/><mat-icon> list_alt</mat-icon></span></button>
        </div>
+    </div>
 
     </div>
 </div>

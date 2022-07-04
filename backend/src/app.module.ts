@@ -12,6 +12,9 @@ import { ScopeEntity } from './entity/scope.entity';
 import { AuthService } from './auth/auth.service';
 import { JwtService, JwtModule } from '@nestjs/jwt';
 import { AuthModule } from './auth/auth.module';
+import { OrderbookUpdateModule } from './orderbook-update/orderbook-update.module';
+import { OrderbookM3ApiController } from './orderbook-m3-api/orderbook-m3-api.controller';
+import { OrderbookM3ApiService } from './orderbook-m3-api/orderbook-m3-api.service';
 
 @Module({
   imports: [ TypeOrmModule.forRoot({
@@ -28,9 +31,9 @@ import { AuthModule } from './auth/auth.module';
         minVersion: 'TLSv1'
       }, encrypt: false
     }
-  }),TypeOrmModule.forFeature([Orderbook,UserLogin,RoleEntity,ScopeEntity]),OrderbookDetailsModule,AuthModule],
-  controllers: [AppController,LoginController],
-  providers: [AppService,LoginService],
+  }),TypeOrmModule.forFeature([Orderbook,UserLogin,RoleEntity,ScopeEntity]),OrderbookDetailsModule,AuthModule, OrderbookUpdateModule],
+  controllers: [AppController,LoginController, OrderbookM3ApiController],
+  providers: [AppService,LoginService, OrderbookM3ApiService],
 
 })
 export class AppModule {}
